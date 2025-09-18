@@ -4494,6 +4494,9 @@ class Sidebar extends BaseComponent {
     return this._element.classList.contains(CLASS_NAME_SIDEBAR_NARROW_UNFOLDABLE);
   }
   _isVisible() {
+    if (!isVisible(this._element)) {
+      return false;
+    }
     const rect = this._element.getBoundingClientRect();
     return rect.top >= 0 && rect.left >= 0 && Math.floor(rect.bottom) <= (window.innerHeight || document.documentElement.clientHeight) && Math.floor(rect.right) <= (window.innerWidth || document.documentElement.clientWidth);
   }
